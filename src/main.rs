@@ -32,7 +32,7 @@ fn main() {
     let mut buf = String::new();
 
     let _ = resp.read_to_string(&mut buf);
-
+    println!("{}", buf);
     let parsed = json::parse(&buf).unwrap();
 
     for n in parsed.members() {
