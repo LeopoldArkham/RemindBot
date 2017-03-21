@@ -8,7 +8,7 @@ use std::io::Read;
 use hyper::Client;
 use hyper::header::{Authorization, UserAgent};
 use hyper::net::HttpsConnector;
-use hyper::method::Method as hyper::Method;
+// use hyper::method::Method as hyper::Method;
 
 // hyper_native_tls
 use hyper_native_tls::NativeTlsClient;
@@ -27,52 +27,50 @@ use hyper_native_tls::NativeTlsClient;
 // reply_url
 // Reminder time
 
-struct Reminder {
-    author: String,
-    reply_url: String,
-    // time:
-}
+// struct Reminder {
+//     author: String,
+//     reply_url: String,
+//     // time:
+// }
 
-impl Reminder {
-    fn new<T: Into<String>>(_author: T, _reply_url) -> Reminder {
-        Reminder {
-            author: _author.into(),
-            reply_url: _reply_url.into()
-        }
-    }
+// impl Reminder {
+//     // fn new<T: Into<String>>(_author: T, _reply_url) -> Reminder {
+//     //     Reminder {
+//     //         author: _author.into(),
+//     //         reply_url: _reply_url.into()
+//     //     }
+//     // }
 
-    fn from_parsed_comment(parsed: JsonValue) -> Reminder {
-        let comment_url = n["subject"]["latest_comment_url"].as_str().unwrap();
-        let mut resp = client.get(comment_url)
-            .header(auth.clone())
-            .header(agent.clone())
-            .send()
-            .unwrap();
-        let mut buf = String::new()
-        let _ = resp.read_to_string(&mut buf);
-        let parsed_comment = json::parse(&buf).unwrap();
+//     fn from_parsed_comment(parsed: JsonValue) -> Reminder {
+//         let comment_url = n["subject"]["latest_comment_url"].as_str().unwrap();
+//         let mut resp = client.get(comment_url)
+//             .header(auth.clone())
+//             .header(agent.clone())
+//             .send()
+//             .unwrap();
+//         let mut buf = String::new()
+//         let _ = resp.read_to_string(&mut buf);
+//         let parsed_comment = json::parse(&buf).unwrap();
 
-        let author = parsed_comment["user"]["login"];
-        let issue_url = if parsed_comment["issue_url"] == json::JsonValue::Null {
-                parsed_comment["url"].as_str().unwrap()
-            } else {
-                parsed_comment["issue_url"].as_str().unwrap()
-            };
-        let reply_url = format!("{}/comments", issue_url);
+//         let author = parsed_comment["user"]["login"];
+//         let issue_url = if parsed_comment["issue_url"] == json::JsonValue::Null {
+//                 parsed_comment["url"].as_str().unwrap()
+//             } else {
+//                 parsed_comment["issue_url"].as_str().unwrap()
+//             };
+//         let reply_url = format!("{}/comments", issue_url);
 
-        Reminder::new(author, reply_url)
-    }
-}
+//         Reminder::new(author, reply_url)
+//     }
+// }
 
-fn authenticated_request(_url: String, _method: hyper::Method) -> String {
-    let method = match _method {
-        Method::Get => Client::get
-        Method::Post => Client:post
-        _ => unreachable!()
-    }
-
-    
-}
+// fn authenticated_request(_url: String, _method: hyper::Method) -> String {
+//     let method = match _method {
+//         Method::Get => Client::get
+//         Method::Post => Client:post
+//         _ => unreachable!()
+//     } 
+// }
 
 fn main() {
     // Setting up TLS
