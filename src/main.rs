@@ -18,18 +18,13 @@ use hyper::method::Method;
 // hyper_native_tls
 use hyper_native_tls::NativeTlsClient;
 
-// A second mention within one thread overrides the previous one.
-// Solution: Poll fast then mark thread as read.
+// Up next:
+// - Cleanup pass
+// - Natural time processing in separate file!()
+// - Remove all unwraps
+// - Handle actual reminders
 
-// TODO: Use Modified-Since headers to limit API polling exhaustion
-// TODO: Identify reply address for Issue-threads
-// TODO: Generalize issue workflow to PR's
-// TODO: Auto API polling every 2 seconds
 
-// Struct reminder:
-// Author
-// reply_url
-// Reminder time
 
 struct Reminder {
     author: String,
